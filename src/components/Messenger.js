@@ -56,7 +56,7 @@ function Messenger({ currentUser, onClose }) {
 
   const formatTimestamp = (timestamp) => {
     try {
-      const date = new Date(timestamp + "Z");
+      const date = new Date(timestamp.slice(0, 23) + "Z");
 
       const datePart = date.toLocaleDateString('ru-RU', {
         day: '2-digit',
