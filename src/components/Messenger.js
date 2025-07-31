@@ -30,7 +30,7 @@ function Messenger({ currentUser, onClose }) {
         id: messages.length + 1,
         sender: currentUser.name,
         content: messageInput,
-        timestamp: new Date().toLocaleTimeString("ru-RU", options),
+        timestamp: new Date().toISOString(), // Use ISO 8601 format
         isReceived: false
       };
       setMessages([...messages, newMessage]);
@@ -55,11 +55,24 @@ function Messenger({ currentUser, onClose }) {
     }
   }
 
-  const options = {
-    month: "numeric",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
+  const formatTimestamp = (timestamp) => {
+    try {
+      const date = new Date(timestamp+'Z');
+
+      const datePart = date.toLocaleDateString('ru-RU', {
+        day: '2-digit',
+        month: '2-digit'
+      });
+      const timePart = date.toLocaleTimeString('ru-RU', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      return `${datePart} ${timePart}`;
+    } catch (error) {
+      console.error('Error parsing timestamp:', error);
+      return 'Invalid time';
+    }
   };
 
   return (
@@ -81,7 +94,7 @@ function Messenger({ currentUser, onClose }) {
                     {message.sender}
                   </div>
                   {message.content}
-                  <div className="message__time">{new Date(message.timestamp.slice(0, 23)).toLocaleString("ru-RU", options)}</div>
+                  <div className="message__time">{formatTimestamp(message.timestamp)}</div>
                 </div>
               </div>
           );
