@@ -340,6 +340,10 @@ body {
   margin-left: auto;
 }
 
+.message--sent .message__time {
+  color: white;
+}
+
 .message__time {
   font-size: 11px;
   color: #65676b;
