@@ -13,13 +13,16 @@ function BirthdayCounter({
 
     const timer = setInterval(() => {
       const now = new Date();
-      const currentYear = now.getFullYear();
+      
+      // Parse the ISO 8601 timestamp from backend
       const birthday = new Date(birthdayDate);
-      birthday.setFullYear(currentYear);
-
+      
+      // Extract just the date part (YYYY-MM-DD) for birthday comparison
+      const birthdayDateOnly = birthday.toISOString().split('T')[0];
+      const todayDateOnly = now.toISOString().split('T')[0];
+      
       // Check if it's the birthday today
-      const isToday = now.getDate() === birthday.getDate() && 
-                     now.getMonth() === birthday.getMonth();
+      const isToday = birthdayDateOnly === todayDateOnly;
 
       if (isToday) {
         setIsBirthday(true);
@@ -27,12 +30,17 @@ function BirthdayCounter({
       } else {
         setIsBirthday(false);
         
+        // Calculate next birthday
+        const currentYear = now.getFullYear();
+        const nextBirthday = new Date(birthdayDate);
+        nextBirthday.setFullYear(currentYear);
+        
         // If birthday has passed this year, calculate for next year
-        if (birthday < now) {
-          birthday.setFullYear(currentYear + 1);
+        if (nextBirthday < now) {
+          nextBirthday.setFullYear(currentYear + 1);
         }
 
-        const difference = birthday - now;
+        const difference = nextBirthday - now;
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
         const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
