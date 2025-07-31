@@ -10,7 +10,6 @@ function Messenger({ currentUser, onClose }) {
       try {
         const res = await fetch("https://message-service-lp4m.onrender.com/api/messages");
         const data = await res.json();
-        console.log(data);
         setMessages(data); // just overwrite the whole list
       } catch (err) {
         console.error("Failed to fetch messages", err);
