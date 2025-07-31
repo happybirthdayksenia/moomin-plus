@@ -8,7 +8,7 @@ function Messenger({ currentUser, onClose }) {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const res = await fetch("http://localhost:8080/api/messages");
+        const res = await fetch("https://message-service-lp4m.onrender.com/api/messages");
         const data = await res.json();
         console.log(data);
         setMessages(data); // just overwrite the whole list
@@ -41,7 +41,7 @@ function Messenger({ currentUser, onClose }) {
 
   const sendMessage = async (message) => {
     try {
-      const res = await fetch('http://localhost:8080/api/messages', {
+      const res = await fetch('https://message-service-lp4m.onrender.com/api/messages', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(message),
