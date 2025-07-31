@@ -26,6 +26,14 @@ body {
   position: relative;
 }
 
+.app__content {
+  flex: 1;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 60px; /* Ensure content doesn't hide behind fixed header */
+}
+
 /* Header Styles */
 .header {
   position: fixed;
@@ -401,11 +409,120 @@ body {
   100% { transform: scale(1); }
 }
 
+/* Birthday Counter Styles */
+.birthday-counter {
+  background: white;
+  border-radius: 10px;
+  padding: 10px 10px 0;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+  top: -12px;
+}
+
+.birthday-counter__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.birthday-counter__header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1877f2;
+  flex: 1;
+}
+
+.birthday-counter__header svg {
+  color: #ff6b6b;
+  font-size: 20px;
+}
+
+.birthday-counter__setup {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.birthday-counter__setup p {
+  color: #65676b;
+  margin-bottom: 15px;
+}
+
+.birthday-counter__countdown {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.birthday-counter__time-unit {
+  flex: 1;
+  text-align: center;
+  background: linear-gradient(135deg, #1877f2, #42a5f5);
+  color: white;
+  border-radius: 8px;
+  padding: 15px 10px;
+  min-width: 60px;
+}
+
+.birthday-counter__number {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.birthday-counter__label {
+  font-size: 12px;
+  opacity: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.birthday-counter__celebration {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #ff6b6b, #ffa500);
+  border-radius: 8px;
+  color: white;
+}
+
+.birthday-counter__celebration-text {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  animation: bounce 1s infinite;
+}
+
+.birthday-counter__celebration-subtext {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .app__body {
     flex-direction: column;
     padding: 10px;
+  }
+  
+  .app__content {
+    padding: 10px;
+    margin-top: 70px; /* Extra margin for mobile to avoid header */
+  }
+  
+  .birthday-counter__countdown {
+    flex-wrap: wrap;
+  }
+  
+  .birthday-counter__time-unit {
+    min-width: calc(50% - 5px);
+    margin-bottom: 10px;
   }
   
   .sidebar {
