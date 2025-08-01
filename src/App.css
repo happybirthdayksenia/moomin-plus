@@ -413,11 +413,11 @@ body {
 .birthday-counter {
   background: white;
   border-radius: 10px;
-  padding: 10px 10px 0;
+  padding: 10px;
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   position: relative;
-  top: -12px;
+  top: -20px;
 }
 
 .birthday-counter__header {

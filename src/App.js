@@ -6,7 +6,7 @@ import BirthdayCounter from './components/BirthdayCounter';
 
 function App() {
   const [isMessengerOpen, setIsMessengerOpen] = useState(false);
-  const [birthdayDate, setBirthdayDate] = useState('2025-08-01T17:00:00Z'); // Example: Christmas Day in ISO 8601
+  const [birthdayDate, setBirthdayDate] = useState('2025-08-02T00:00:00+07:00'); // Example: Christmas Day in ISO 8601
   const [currentUser] = useState({
     id: 1,
     name: 'Ksenia',
