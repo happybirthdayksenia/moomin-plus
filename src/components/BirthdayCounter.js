@@ -23,12 +23,11 @@ function BirthdayCounter({
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
         setTimeLeft({ days, hours, minutes, seconds });
+      } else {
+        setIsBirthday(true);
+
       }
     }, 1000);
-
-    if (timeLeft > 0) {
-      setIsBirthday(true);
-    }
 
     return () => clearInterval(timer);
   }, [birthdayDate]);
